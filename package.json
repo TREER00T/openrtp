@@ -1,0 +1,35 @@
+{
+  "name": "openrtp",
+  "version": "0.0.5-alpha",
+  "description": "Is a text-based software framework supported by an extensive ecosystem of tools that help developers design, build, document, and use programming relationships for socket.io.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest"
+  },
+  "jest": {
+    "testMatch": [
+      "**/test/**/*.test.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treegex/openrtp.git"
+  },
+  "keywords": [
+    "socket.io-docs",
+    "socket.io-swagger",
+    "swagger",
+    "openrtp"
+  ],
+  "author": "Ali Azmoodeh <treeroot.ir@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/treegex/openrtp/issues"
+  },
+  "homepage": "https://github.com/treegex/openrtp#readme",
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "nodemon": "^2.0.19"
+  }
+}
