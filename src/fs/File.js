@@ -1,19 +1,10 @@
 let fs = require('fs');
 
-let location = '';
-
 
 module.exports = {
 
-
-    setLocation(loc) {
-        location = loc;
-    },
-
-
-    read() {
+    read(location) {
         return fs.readFileSync(location).toString();
     }
-
 
 }
