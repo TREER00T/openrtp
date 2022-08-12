@@ -1,0 +1,126 @@
+info:
+  title: Account Service
+  version: 1.0.0
+  contact:
+    email: treeroot.ir@gmail.com
+    phone: 09030207892
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: This service is in charge of processing user signups
+
+baseUrl: http://localhost:3000
+
+tags:
+  - name: Auth
+    description: Operations about user authentication
+  - name: E2E
+    description: Operations about user end to end message settings
+
+securityDefinitions:
+  apiKey:
+    description: REST API uses a persistent Api Key.
+    type: apiKey
+    in: header
+    schema: all
+    name: apiKey
+  token:
+    description: REST API uses a persistent JWT Token.
+    type: apiKey
+    in: header
+    name: authorization
+
+
+paths:
+
+  /:
+    - emit: USER_ONLINE
+        type:
+          - json
+          - binary
+          - text
+        tags:
+          - Auth
+        parameters:
+          - in: header
+            name: phone
+            type: integer
+            required: true
+          - in: param
+            name: phone
+            type: integer
+            required: true
+        security:
+          - apiKey: [ ]
+          - token: [ ]
+
+    - on: USER_ONLINE
+        type:
+          - json
+          - binary
+          - text
+        tags:
+          - Auth
+        parameters:
+          - in: header
+            name: phone
+            type: integer
+            required: true
+          - in: param
+            name: phone
+            type: integer
+            required: true
+
+
+  /ali:
+    - on: USER_ONLINE
+      description: Some Thing to write
+      type:
+        - json
+        - binary
+        - text
+      tags:
+        - Auth
+      parameters:
+        - args:
+            type: json
+              - in: header
+                name: phone
+                type: integer
+                required: true
+              - in: param
+                name: phone
+                type: integer
+                required: true
+
+
+
+
+definitions:
+  Status:
+    type: object
+    properties:
+      id:
+        type: string
+        default: 15
+        description: Name of the user
+
+
+
+components:
+  parameters:
+    Status:
+      - in: header
+        name: phone
+        type: integer
+        required: true
+      - in: param
+        name: phone
+        type: integer
+        required: true
+  properties:
+    Status:
+      type: object
+      id:
+        type: string
+        description: Name of the user

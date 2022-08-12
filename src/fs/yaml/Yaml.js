@@ -1,5 +1,5 @@
 let yaml = require('yaml'),
-    File = require('src/fs/File');
+    File = require('../File');
 
 
 module.exports = {
