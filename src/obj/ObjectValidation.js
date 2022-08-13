@@ -62,17 +62,57 @@ function paths() {
                         addTagsIntoArray(tagItem, object, key);
                     });
 
-                if (isString(tagsInsidePaths)) {
+                if (isString(tagsInsidePaths))
                     addTagsIntoArray(tagsInsidePaths, object, key);
-                }
+
+
+                object?.parameters?.forEach(itemForParameter => {
+                    let args = itemForParameter?.args;
+                    let isUsedArgs = args !== undefined;
+                    let isUsedReference = (item) => item === '$ref';
+                    let isRef = isUsedReference(Object.keys(itemForParameter)[0]);
+                    let isRefInComponent = (data) => isReferenceIntoComponentObjectForParameter(data['$ref']);
+
+                    if (isRef && isRefInComponent(itemForParameter)) {
+                      //  object.parameters.splice(object.parameters.indexOf(getRefName(itemForParameter['$ref'])), 1);
+                      ///  console.log(object.parameters)
+                      //  object.parameters.push(isRefInComponent(itemForParameter));
+                    }
+
+                    if (isUsedArgs)
+                        args?.forEach(argItem => {
+                            let isRef = isUsedReference(Object.keys(argItem)[0]);
+
+                            if (isRef && isRefInComponent(argItem)) {
+                             //   args.splice(args.indexOf(getRefName(argItem['$ref'])), 1);
+                                //console.log(args)
+                           //     args.push(isRefInComponent(argItem));
+                            }
+
+                        });
+
+                });
 
             });
 
-
         }
+   // console.log(pathsObject['/ali'])
 
     return data;
 }
+
+function getRefName(str) {
+    return str?.split('/')[1];
+}
+
+function isReferenceIntoComponentObjectForParameter(key) {
+    let parameters = yamlObject?.components?.parameters,
+        parameterObject = parameters?.[getRefName(key)];
+
+    console.log(parameterObject)
+    return parameterObject === undefined ? false : parameterObject;
+}
+
 
 function getPaths() {
 
