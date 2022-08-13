@@ -66,7 +66,7 @@ function paths() {
                     addTagsIntoArray(tagsInsidePaths, object, key);
 
 
-                object?.parameters?.forEach(itemForParameter => {
+                object?.parameters?.forEach((itemForParameter, index, arr) => {
                     let args = itemForParameter?.args;
                     let isUsedArgs = args !== undefined;
                     let isUsedReference = (item) => item === '$ref';
@@ -74,19 +74,17 @@ function paths() {
                     let isRefInComponent = (data) => isReferenceIntoComponentObjectForParameter(data['$ref']);
 
                     if (isRef && isRefInComponent(itemForParameter)) {
-                      //  object.parameters.splice(object.parameters.indexOf(getRefName(itemForParameter['$ref'])), 1);
-                      ///  console.log(object.parameters)
-                      //  object.parameters.push(isRefInComponent(itemForParameter));
+                        arr.splice(index, 1);
+                        object.parameters = isRefInComponent(itemForParameter).concat(arr);
                     }
 
                     if (isUsedArgs)
-                        args?.forEach(argItem => {
+                        args?.forEach((argItem, index, arr) => {
                             let isRef = isUsedReference(Object.keys(argItem)[0]);
 
                             if (isRef && isRefInComponent(argItem)) {
-                             //   args.splice(args.indexOf(getRefName(argItem['$ref'])), 1);
-                                //console.log(args)
-                           //     args.push(isRefInComponent(argItem));
+                                arr.splice(index, 1);
+                                itemForParameter.args = isRefInComponent(argItem).concat(arr);
                             }
 
                         });
@@ -96,7 +94,6 @@ function paths() {
             });
 
         }
-   // console.log(pathsObject['/ali'])
 
     return data;
 }
@@ -109,7 +106,6 @@ function isReferenceIntoComponentObjectForParameter(key) {
     let parameters = yamlObject?.components?.parameters,
         parameterObject = parameters?.[getRefName(key)];
 
-    console.log(parameterObject)
     return parameterObject === undefined ? false : parameterObject;
 }
 
