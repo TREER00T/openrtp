@@ -6,6 +6,6 @@ let initExpress = require('./src/express/index'),
 module.exports = (app, fileLocation, route) => {
     yamlDocs.parse(File.read(fileLocation));
     initExpress(app, route);
-    console.log(yamlDocs.data)
+    //console.log(yamlDocs.data)
 }
 module.exports(undefined, 'asyncapi.yaml')
