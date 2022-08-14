@@ -29,8 +29,10 @@ function addTagsIntoArray(tagsInsidePaths, object, route) {
 function securityDefinitions() {
     let securityDefinitionsObject = yamlObject?.securityDefinitions;
     module.exports.arrayOfKeyForAddAuthInAllRequest = [];
+    module.exports.securityDefinitions = [];
     for (let key in securityDefinitionsObject) {
         let item = securityDefinitionsObject[key];
+        module.exports.securityDefinitions.push(item);
         if (isAuthInAllRequest(item?.schema))
             module.exports.arrayOfKeyForAddAuthInAllRequest.push(key);
     }
@@ -43,7 +45,7 @@ function paths() {
         pathsObject.forEach(item => {
             data.push(item);
         });
-        return yamlObject?.paths = makeObject('/', data);
+        return yamlObject.paths = makeObject('/', data);
     }
 
     if (isJsonObject(pathsObject))
