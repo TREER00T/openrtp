@@ -1,0 +1,243 @@
+body {
+    background-color: #F3F3F3;
+}
+
+.box {
+    width: 100%;
+    box-shadow: 5px 2px 30px rgba(0, 0, 0, 0.16);
+    height: 100%;
+    overflow: auto;
+    background-color: #FFFFFF;
+}
+
+.box-info {
+    width: 100%;
+    box-shadow: 5px 2px 30px rgba(0, 0, 0, 0.16);
+    height: 100%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    overflow: auto;
+    background-color: #FFFFFF;
+}
+
+.box-border {
+    padding: 1%;
+    border: 2px solid rgba(77, 101, 255, 0.54);
+    border-radius: 5px;
+    text-align: center;
+    width: 10%;
+}
+
+.text-in-box {
+    font-family: 'Trebuchet MS', sans-serif;
+    color: rgba(77, 101, 255, 0.54);
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.white {
+    color: white;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.info-back-color {
+    width: 3.5%;
+    padding: 2%;
+    text-align: center;
+    border-top-left-radius: 1px;
+    border-bottom-right-radius: 15px;
+    background-color: rgb(255,229,0,100);
+}
+
+.margin-top-4 {
+    margin-top: 4%;
+}
+
+
+/* For Desktop And Large Screen */
+
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+    .box {
+        width: 94%;
+        border-radius: 8px;
+        padding: 1.5% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .box {
+        width: 94%;
+        border-radius: 8px;
+        padding: 1.5% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+    .box {
+        width: 94%;
+        border-radius: 8px;
+        padding: 1% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+@media only screen and (min-width: 64.063em) {
+    .box {
+        width: 94%;
+        border-radius: 15px;
+        padding: 1% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+    .box {
+        width: 94%;
+        border-radius: 15px;
+        padding: 1% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+@media only screen and (min-width: 90.063em) {
+    .box {
+        width: 94%;
+        border-radius: 15px;
+        padding: 1% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+@media only screen and (min-width: 90.063em) and (max-width: 120em) {
+    .box {
+        width: 94%;
+        border-radius: 15px;
+        padding: 1% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+@media only screen and (min-width: 120.063em) {
+    .box {
+        width: 94%;
+        border-radius: 15px;
+        padding: 1% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .box {
+        width: 94%;
+        border-radius: 5px;
+        padding: 1% 3%;
+    }
+
+    .box-info {
+        width: 94%;
+        border-radius: 8px;
+        padding-right: 6%;
+    }
+}
+
+
+/* Mobile */
+
+@media all and (max-width: 480px) {
+
+}
+
+@media only screen {
+
+}
+
+@media only screen and (max-width: 40em) {
+
+}
+
+@media only screen and (min-width: 40.063em) {
+
+}
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+
+}
+
+@media screen and (orientation: landscape) {
+
+}
+
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+
+}
+
+@media screen and (max-device-width: 480px) and (orientation: landscape) {
+
+}
+
+@media screen and (min-device-width: 481px) and (orientation: portrait) {
+
+}
+
+@media screen and (min-device-width: 481px) and (orientation: landscape) {
+
+}
