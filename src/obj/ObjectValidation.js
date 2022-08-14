@@ -5,20 +5,12 @@ let yaml = require('yaml'),
         isTagsUsed,
         makeObject,
         isJsonObject,
-        isObjectUndefined
-    } = require('../util/Utils'),
-    SecurityDefinitionsObject = require('./SecurityDefinitions');
+        isAuthInAllRequest
+    } = require('../util/Utils');
 
 
 let yamlObject;
 
-
-function securityDefinitions() {
-    let securityDefinitions = yamlObject?.securityDefinitions;
-    if (!isObjectUndefined(securityDefinitions))
-        return SecurityDefinitionsObject.parse(securityDefinitions);
-    return false;
-}
 
 let arrayOfItemWithTags = [];
 
@@ -34,6 +26,18 @@ function addTagsIntoArray(tagsInsidePaths, object, route) {
     });
 }
 
+function securityDefinitions() {
+    let securityDefinitionsObject = yamlObject?.securityDefinitions;
+    module.exports.arrayOfKeyForAddAuthInAllRequest = [];
+    module.exports.securityDefinitions = [];
+    for (let key in securityDefinitionsObject) {
+        let item = securityDefinitionsObject[key];
+        module.exports.securityDefinitions.push(item);
+        if (isAuthInAllRequest(item?.schema))
+            module.exports.arrayOfKeyForAddAuthInAllRequest.push(key);
+    }
+}
+
 function paths() {
     let data = [];
     let pathsObject = yamlObject?.paths;
@@ -41,7 +45,7 @@ function paths() {
         pathsObject.forEach(item => {
             data.push(item);
         });
-        return [{data: data, route: '/'}];
+        return yamlObject.paths = makeObject('/', data);
     }
 
     if (isJsonObject(pathsObject))
@@ -95,7 +99,6 @@ function paths() {
 
         }
 
-    return data;
 }
 
 function getRefName(str) {
@@ -109,10 +112,6 @@ function isReferenceIntoComponentObjectForParameter(key) {
     return parameterObject === undefined ? false : parameterObject;
 }
 
-
-function getPaths() {
-
-}
 
 module.exports.parse = (yamlDataObject) => {
     yamlObject = yaml.parseDocument(yamlDataObject).toJSON();
