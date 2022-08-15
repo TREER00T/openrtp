@@ -1,19 +1,26 @@
 :root {
-    --gray-300: rgb(0, 0, 0, 0.67);
+    --gray-400: rgb(0, 0, 0, 0.67);
+    --gray-300: rgb(112, 112, 112);
     --gray-light: rgba(0, 0, 0, 0.16);
     --gray-200: rgba(188, 188, 188, 0.21);
     --gray-100: rgb(243, 243, 243);
+    --green-300: rgb(71, 255, 108);
+    --green-400: rgb(0, 214, 0);
+    --green-500: rgb(0, 214, 0, 0.55);
     --red-100: rgb(255, 77, 77, 0.54);
+    --red-300: rgb(255, 71, 71);
     --blue-ligth-100: rgba(77, 101, 255, 0.54);
 }
 
 body {
     background-color: var(--gray-100);
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 .box {
     box-shadow: 5px 2px 30px var(--gray-light);
-    border-radius: 5px;
+    border-radius: 8px;
     overflow: auto;
     background-color: white;
 }
@@ -21,12 +28,13 @@ body {
 .gray-box-info {
     background-color: var(--gray-200);
     margin: 3vw 2vw;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .circle-red-back-icon {
     background-color: var(--red-100);
     border-radius: 50px;
+    box-shadow: 5px 2px 30px var(--gray-light);
     margin-right: 3%;
     padding: 5%;
 }
@@ -34,14 +42,22 @@ body {
 .box-info {
     box-shadow: 5px 2px 30px var(--gray-light);
     padding-bottom: 2%;
-    border-radius: 5px;
+    border-radius: 8px;
     overflow: auto;
     background-color: white;
 }
 
+
+.tag {
+    width: 10%;
+    border-radius: 5px 20px 5px 20px;
+    margin-left: 2vw;
+    padding: 1vw 2vw;
+}
+
 .box-border {
     border: 0.2vw solid var(--blue-ligth-100);
-    border-radius: 5px;
+    border-radius: 8px;
     margin: 1vw 2vw;
     padding: 1vw 2vw;
 }
@@ -53,6 +69,27 @@ body {
 
 .right {
     float: right;
+}
+
+.green {
+    background-color: var(--green-300);
+}
+
+.red-shadow {
+    box-shadow: 5px 2px 30px var(--red-300);
+}
+
+.green-shadow {
+    box-shadow: 5px 2px 30px var(--green-300);
+}
+
+.red {
+    background-color: var(--red-300);
+}
+
+.aParent div {
+    float: left;
+    clear: none;
 }
 
 .left {
@@ -85,6 +122,14 @@ body {
     position: relative;
 }
 
+.green-500-shadow {
+    box-shadow: 5px 2px 30px var(--green-500);
+}
+
+.green-400 {
+    background-color: var(--green-400);
+}
+
 .grid-container {
     display: grid;
     align-content: center;
@@ -103,6 +148,11 @@ body {
     background-color: white;
 }
 
+.p {
+    line-height: 10%;
+    text-align: center;
+}
+
 .center a {
     position: absolute;
     top: 50%;
@@ -113,11 +163,15 @@ body {
 
 .title-color {
     font-family: 'Trebuchet MS', sans-serif;
-    color: var(--gray-300);
+    color: var(--gray-400);
 }
 
 .margin-top-4 {
     margin-top: 4%;
+}
+
+.margin-top-2 {
+    margin-top: 2%;
 }
 
 .margin-top-1 {
@@ -150,6 +204,12 @@ body {
         padding: 3vw 5vw;
     }
 
+    .arrow {
+        margin-top: 1.5%;
+        width: 12%;
+        height: auto;
+    }
+
 }
 
 
@@ -174,6 +234,16 @@ body {
 
     .grid-container {
         grid-gap: 120px 85px;
+    }
+
+    .tag {
+        width: 5%;
+    }
+
+    .arrow {
+        margin-top: 2.5%;
+        width: 8%;
+        height: auto;
     }
 
 }
