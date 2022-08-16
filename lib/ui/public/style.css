@@ -1,6 +1,7 @@
 :root {
     --gray-400: rgb(0, 0, 0, 0.67);
     --gray-300: rgb(112, 112, 112);
+    --gray-350: rgb(112, 112, 112, 0.35);
     --gray-light: rgba(0, 0, 0, 0.16);
     --gray-200: rgba(188, 188, 188, 0.21);
     --gray-100: rgb(243, 243, 243);
@@ -99,17 +100,17 @@ body {
     margin-left: 4%;
     text-align: center;
     width: 6%;
-    box-shadow: 5px 2px 30px var(--green-500);
+    box-shadow: 5px 2px 15px var(--green-500);
     color: white;
     font-family: 'Trebuchet MS', sans-serif;
     padding: 0.7% 1.5%;
 }
 
 .vertical-list div {
-    overflow-y: auto;
+    overflow: auto;
 }
 
-.vertical-txt {
+.horizontal-txt {
     font-family: 'Leelawadee UI', sans-serif;
     font-weight: bold;
     color: var(--gray-300);
@@ -117,19 +118,28 @@ body {
 }
 
 .tag-item {
-    margin-top: 1.5%;
+    margin-top: 0.5%;
     text-align: center;
-    margin-bottom: 1.5%;
+    margin-bottom: 0.5%;
 }
 
 .div-parent div {
     float: left;
-    clear: none;
 }
 
 .p-parent p {
     float: left;
-    clear: none;
+}
+
+.img-parent img {
+    float: right;
+    margin-right: 2%;
+}
+
+.line {
+    margin-left: 4%;
+    margin-right: 5%;
+    border: 1px solid var(--gray-350);
 }
 
 .left {
@@ -198,8 +208,16 @@ body {
     color: var(--gray-400);
 }
 
+.txt-desc {
+    margin: 3%;
+}
+
 .margin-top-4 {
     margin-top: 4%;
+}
+
+.margin-bottom-5 {
+    margin-bottom: 5%;
 }
 
 .margin-top-2 {
@@ -208,6 +226,10 @@ body {
 
 .margin-top-1 {
     margin-top: 1%;
+}
+
+.margin-top-0-5 {
+    margin-top: 0.5%;
 }
 
 .margin-left-5 {
@@ -236,14 +258,19 @@ body {
         padding: 3vw 5vw;
     }
 
-    .arrow {
+    .arrow-tag {
         margin-top: 1.5%;
         width: 12%;
         height: auto;
     }
 
-    .vertical-txt {
+    .horizontal-txt {
         margin-top: 2.8%;
+    }
+
+    .horizontal-img {
+        width: 60px;
+        height: auto;
     }
 
 }
@@ -276,7 +303,7 @@ body {
         width: 5%;
     }
 
-    .arrow {
+    .arrow-tag {
         margin-top: 2.5%;
         width: 8%;
         height: auto;
@@ -286,8 +313,17 @@ body {
         width: 2%;
     }
 
-    .vertical-txt {
+    .horizontal-txt {
         margin-top: 1.7%;
+    }
+
+    .horizontal-img {
+        width: 65px;
+        height: auto;
+    }
+
+    .line {
+        margin-right: 4%;
     }
 
 }
