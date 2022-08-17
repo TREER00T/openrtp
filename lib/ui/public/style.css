@@ -18,6 +18,7 @@
     --red-100: rgb(255, 77, 77, 0.54);
     --red-300: rgb(255, 71, 71);
     --blue-ligth-100: rgba(77, 101, 255, 0.54);
+    --green-ligth-200: rgba(0, 214, 0, 0.55);
 }
 
 body {
@@ -109,6 +110,10 @@ body {
 .text-in-box {
     font-family: 'Trebuchet MS', sans-serif;
     color: var(--blue-ligth-100);
+}
+
+.tbl-status {
+    display: none;
 }
 
 .models-item {
@@ -343,7 +348,6 @@ table {
     text-align: center;
     width: 92%;
     margin-left: 4%;
-    display: none;
     border-collapse: separate;
     border-spacing: 0;
 }
@@ -367,6 +371,29 @@ table th {
     text-align: center;
     background-color: var(--purple-400);
     color: white;
+}
+
+
+.close-btn {
+    font-family: 'Trebuchet MS', sans-serif;
+    margin-top: 6%;
+    color: white;
+    margin-right: 4.5%;
+    margin-left: 4.5%;
+    cursor: pointer;
+    padding: 3%;
+    border-radius: 15px;
+    background-color: var(--green-ligth-200);
+}
+
+
+dialog {
+    border: none !important;
+    position: fixed;
+    text-align: center;
+    border-radius: calc(5px * 3.74);
+    box-shadow: 5px 2px 100px var(--gray-300);
+    padding: 1.6rem 2%;
 }
 
 @media screen and (orientation: portrait) {
@@ -468,7 +495,7 @@ table th {
         margin-bottom: 2%;
     }
 
-    .txt-desc{
+    .txt-desc {
         margin: 3% 1%;
     }
 
