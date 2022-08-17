@@ -113,6 +113,7 @@ body {
 
 .models-item {
     margin: 3%;
+    cursor: pointer;
     border-radius: 8px;
     background-color: var(--gray-200);
 }
@@ -162,6 +163,7 @@ body {
 
 .tag-item {
     margin-top: 0.5%;
+    cursor: pointer;
     text-align: center;
     margin-bottom: 0.5%;
 }
@@ -274,7 +276,10 @@ p .p, .white {
 }
 
 .txt-desc {
-    margin: 3%;
+    font-family: 'Trebuchet MS', sans-serif;
+    margin: 5% 3%;
+    color: var(--gray-300);
+    font-weight: bold;
 }
 
 .margin-top-4 {
@@ -338,6 +343,7 @@ table {
     text-align: center;
     width: 92%;
     margin-left: 4%;
+    display: none;
     border-collapse: separate;
     border-spacing: 0;
 }
@@ -460,6 +466,10 @@ table th {
 
     .div-span {
         margin-bottom: 2%;
+    }
+
+    .txt-desc{
+        margin: 3% 1%;
     }
 
     .models-item {
