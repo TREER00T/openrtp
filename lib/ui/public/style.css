@@ -381,15 +381,26 @@ table th {
     margin-right: 4.5%;
     margin-left: 4.5%;
     cursor: pointer;
-    padding: 3%;
+    padding: 2%;
     border-radius: 15px;
     background-color: var(--green-ligth-200);
 }
 
+.caption {
+    color: var(--gray-400);
+    font-weight: bold;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', sans-serif;
+}
 
 dialog {
     border: none !important;
     position: fixed;
+    width: auto;
+    margin-left: 10%;
+    margin-right: 10%;
     text-align: center;
     border-radius: calc(5px * 3.74);
     box-shadow: 5px 2px 100px var(--gray-300);
