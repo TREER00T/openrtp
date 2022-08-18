@@ -62,10 +62,14 @@ body {
 
 .circle-red-back-icon {
     background-color: var(--red-100);
-    border-radius: 50px;
+    border-radius: 30px;
     box-shadow: 5px 2px 30px var(--gray-light);
     margin-right: 3%;
-    padding: 5%;
+    padding: 3%;
+}
+
+.resize-img {
+    width: 32px;
 }
 
 .rectangle-box-border {
@@ -407,6 +411,11 @@ dialog {
     padding: 1.6rem 2%;
 }
 
+.link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 @media screen and (orientation: portrait) {
 
 
@@ -437,6 +446,10 @@ dialog {
     .horizontal-img {
         width: 60px;
         height: auto;
+    }
+
+    .resize-img {
+        width: 24px;
     }
 
 }
