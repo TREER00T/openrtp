@@ -230,6 +230,10 @@ p .p, .white {
     cursor: pointer;
 }
 
+.common-auth {
+    cursor: pointer;
+}
+
 .font-simple {
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
@@ -251,6 +255,11 @@ p .p, .white {
 
 .horizontal-img {
     cursor: pointer;
+}
+
+.resize-img-auth {
+    cursor: pointer;
+    margin-top: 1.5%;
 }
 
 .grid-item {
@@ -439,12 +448,24 @@ dialog {
         height: auto;
     }
 
+    .common-auth {
+        margin-top: 4.5%;
+        width: 5%;
+        height: auto;
+    }
+
     .horizontal-txt {
         margin-top: 2.8%;
     }
 
     .horizontal-img {
         width: 60px;
+        height: auto;
+    }
+
+    .resize-img-auth {
+        width: 16px;
+        margin-top: 3.5%;
         height: auto;
     }
 
@@ -488,6 +509,12 @@ dialog {
         height: auto;
     }
 
+    .common-auth {
+        margin-top: 5%;
+        width: 3%;
+        height: auto;
+    }
+
     .rectangle {
         width: 2%;
     }
@@ -498,6 +525,11 @@ dialog {
 
     .horizontal-img {
         width: 65px;
+        height: auto;
+    }
+
+    .resize-img-auth {
+        width: 24px;
         height: auto;
     }
 
