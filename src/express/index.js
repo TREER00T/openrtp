@@ -6,14 +6,17 @@ let {
 
 
 module.exports = (expressApp, route, publicRoute) => {
+    let pubRoute = publicRoute === undefined ? '/public' : publicRoute,
+        viewRoute = route === undefined ? '/socket-docs' : route,
+        path = __dirname + '/ui/public';
     if (expressApp !== undefined || null) {
         let app = expressApp();
-        app.use(publicRoute === undefined ? '/public' : publicRoute, expressApp.static(__dirname + '/ui/public'));
-        app.get(route === undefined ? '/socket-docs' : route, reqHandler);
+        app.use(pubRoute, expressApp.static(path));
+        app.get(viewRoute, reqHandler);
         return;
     }
-    app.use(publicRoute === undefined ? '/public' : publicRoute, express.static(__dirname + '/ui/public'));
-    app.get(route === undefined ? '/socket-docs' : route, reqHandler);
+    app.use(pubRoute, express.static(path));
+    app.get(viewRoute, reqHandler);
     app.listen(17892, () => {
         console.log(`OpenRTP Listen On 17892 ...`);
     });
