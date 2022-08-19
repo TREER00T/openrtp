@@ -18,7 +18,7 @@ module.exports = (expressApp, route, publicRoute) => {
     app.use(pubRoute, express.static(path));
     app.get(viewRoute, reqHandler);
     app.listen(17892, () => {
-        console.log(`OpenRTP Listen On 17892 ...`);
+        console.log(`OpenRTP Listen On Port 17892 ...`);
     });
 }
 
