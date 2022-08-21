@@ -21,5 +21,3 @@ module.exports = (expressApp, route, publicRoute) => {
         console.log(`OpenRTP Listen On Port 17892 ...`);
     });
 }
-
-module.exports();

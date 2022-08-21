@@ -248,8 +248,8 @@ p .p, .white {
     display: grid;
     align-content: center;
     align-items: center;
-    grid-gap: 80px 35px;
-    grid-template-rows: 10% 10%;
+    grid-gap: 20px 35px;
+    grid-template-rows: auto;
     grid-template-columns: 45% 45%;
 }
 
@@ -496,7 +496,7 @@ dialog {
     }
 
     .grid-container {
-        grid-gap: 120px 85px;
+        grid-gap: 30px 85px;
     }
 
     .tag {

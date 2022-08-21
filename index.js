@@ -7,3 +7,8 @@ module.exports = (data) => {
     yamlDocs.parse(File.read(data?.fileLocation));
     initExpress(data?.express, data?.route, data?.publicRoute);
 }
+
+
+module.exports({
+    fileLocation : 'asyncapi.yaml'
+});
