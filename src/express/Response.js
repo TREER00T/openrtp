@@ -3,3 +3,7 @@ module.exports.send = (res, data) => {
     res.write(data);
     res.send();
 }
+
+module.exports.sendIconUrl = (res, data) => {
+    res.status(200).json(data);
+}
