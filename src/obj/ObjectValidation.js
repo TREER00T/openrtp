@@ -6,10 +6,7 @@ let yaml = require('yaml'),
         makeObject,
         isJsonObject,
         isAuthInAllRequest
-    } = require('../util/Utils'),
-    {
-        isDefined
-    } = require('../../lib/util/Utilities');
+    } = require('../util/Utils');
 
 
 let yamlObject;
@@ -34,29 +31,7 @@ function securityDefinitions() {
     module.exports.arrayOfKeyForAddAuthInAllRequest = [];
     module.exports.securityDefinitions = [];
     for (let key in securityDefinitionsObject) {
-        let item = securityDefinitionsObject[key],
-            name = item?.name,
-            inObject = item?.in,
-            type = item?.type,
-            description = item?.description,
-            required = item?.required;
-
-
-        if (!isDefined(name))
-            item.name = '-';
-
-        if (!isDefined(inObject))
-            item.in = 'param';
-
-        if (!isDefined(type))
-            item.type = 'string';
-
-        if (!isDefined(description))
-            item.description = '-';
-
-        if (!isDefined(required))
-            item.required = false;
-
+        let item = securityDefinitionsObject[key];
 
         item.aliasName = key;
         module.exports.securityDefinitions.push(item);
