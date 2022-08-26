@@ -44,6 +44,12 @@ body {
     background-color: white;
 }
 
+.flex-div {
+    height: auto;
+    display: flex;
+    width: 75%;
+}
+
 .box-border:hover {
     background: var(--blue-ligth-100);
     border: 0.2vw solid white;
@@ -259,7 +265,7 @@ p .p, .white {
 
 .resize-img-auth {
     cursor: pointer;
-    margin-top: 1.5%;
+    padding: 16px;
 }
 
 .grid-item {
@@ -465,7 +471,7 @@ dialog {
 
     .resize-img-auth {
         width: 16px;
-        margin-top: 3.5%;
+        margin-top: 1%;
         height: auto;
     }
 
@@ -530,6 +536,8 @@ dialog {
 
     .resize-img-auth {
         width: 24px;
+        margin-top: 0.5%;
+        padding: 15px;
         height: auto;
     }
 
@@ -557,6 +565,10 @@ dialog {
 
     .models-item {
         margin: 2%;
+    }
+
+    .flex-div {
+        width: 82%;
     }
 
 }

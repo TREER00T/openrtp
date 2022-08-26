@@ -107,15 +107,20 @@ function paths() {
                         newParameterArr = newParameterArr.concat(itemForParameter);
 
 
-                    if (isUsedArgs)
+                    if (isUsedArgs) {
+                        let argsData = [];
                         args?.forEach(argItem => {
+
+                            if (!isRef(argItem)) {
+                                argsData = argsData.concat(argItem);
+                            }
 
                             if (isArray(argItem?.$ref)) {
                                 argItem.$ref.forEach(item => {
 
                                     let isRefObject = isRefInComponent(item, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME);
                                     if (isRefObject)
-                                        newParameterArr = newParameterArr.concat(isRefObject);
+                                        argsData = argsData.concat(isRefObject);
 
                                 });
                                 return;
@@ -123,20 +128,18 @@ function paths() {
 
                             let isRefObject = isRefInComponent(argItem, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME);
                             if (isRefObject)
-                                newParameterArr = newParameterArr.concat(isRefObject);
-
-                            if (!isRef(argItem))
-                                newParameterArr = newParameterArr.concat(argItem);
+                                argsData = argsData.concat(isRefObject);
 
                         });
+                        itemForParameter.args = argsData;
+                    }
+
 
                 });
 
                 if (isDefined(object?.parameters)) {
                     object.parameters = newParameterArr;
                 }
-
-                console.log(object?.parameters)
 
                 let newEventArr = [];
 
@@ -171,18 +174,6 @@ function paths() {
         }
 
 }
-
-function pushDataParameter(data) {
-    if (isRef(data.itemForObject) && isRefInComponent(data.itemForObject, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME)) {
-        remove(data.arr, data.itemForObject);
-        data.object[data.objectType] = isRefInComponent(data.itemForObject, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME).concat(data.arr);
-    }
-}
-
-function remove(arr, item) {
-    arr.splice(arr.indexOf(item), 1);
-}
-
 
 function getRefName(str) {
     return str?.split('/')[1];
