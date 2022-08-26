@@ -6,11 +6,20 @@ let yaml = require('yaml'),
         makeObject,
         isJsonObject,
         isAuthInAllRequest
-    } = require('../util/Utils');
+    } = require('../util/Utils'),
+    {
+        isDefined
+    } = require('../../lib/util/Utilities');
 
 
 let yamlObject;
 
+let isRefInComponent = (data, type) => isReferenceIntoComponentObjectForParameter(isString(data) ? data : data['$ref'], type);
+let isUsedReference = (item) => item === '$ref';
+let isRef = (object) => isUsedReference(Object.keys(object)[0]);
+
+const COMPONENTS_FOR_PARAMETERS_OBJECT_NAME = 'parameters',
+    COMPONENTS_FOR_EVENTS_OBJECT_NAME = 'events';
 
 let arrayOfItemWithTags = [];
 
@@ -72,30 +81,90 @@ function paths() {
                     addTagsIntoArray(tagsInsidePaths, object, key);
 
 
+                let newParameterArr = [];
                 object?.parameters?.forEach((itemForParameter, index, arr) => {
                     let args = itemForParameter?.args;
                     let isUsedArgs = args !== undefined;
-                    let isUsedReference = (item) => item === '$ref';
-                    let isRef = isUsedReference(Object.keys(itemForParameter)[0]);
-                    let isRefInComponent = (data) => isReferenceIntoComponentObjectForParameter(data['$ref']);
 
-                    if (isRef && isRefInComponent(itemForParameter)) {
-                        arr.splice(index, 1);
-                        object.parameters = isRefInComponent(itemForParameter).concat(arr);
+
+                    if (isArray(itemForParameter?.$ref)) {
+                        itemForParameter.$ref.forEach(item => {
+
+                            let isRefObject = isRefInComponent(item, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME);
+                            if (isRefObject)
+                                newParameterArr = newParameterArr.concat(isRefObject);
+
+                        });
+                        return;
                     }
 
-                    if (isUsedArgs)
-                        args?.forEach((argItem, index, arr) => {
-                            let isRef = isUsedReference(Object.keys(argItem)[0]);
+                    let isRefObject = isRefInComponent(itemForParameter, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME);
+                    if (isRefObject)
+                        newParameterArr = newParameterArr.concat(isRefObject);
 
-                            if (isRef && isRefInComponent(argItem)) {
-                                arr.splice(index, 1);
-                                itemForParameter.args = isRefInComponent(argItem).concat(arr);
+
+                    if (!isRef(itemForParameter))
+                        newParameterArr = newParameterArr.concat(itemForParameter);
+
+
+                    if (isUsedArgs)
+                        args?.forEach(argItem => {
+
+                            if (isArray(argItem?.$ref)) {
+                                argItem.$ref.forEach(item => {
+
+                                    let isRefObject = isRefInComponent(item, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME);
+                                    if (isRefObject)
+                                        newParameterArr = newParameterArr.concat(isRefObject);
+
+                                });
+                                return;
                             }
+
+                            let isRefObject = isRefInComponent(argItem, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME);
+                            if (isRefObject)
+                                newParameterArr = newParameterArr.concat(isRefObject);
+
+                            if (!isRef(argItem))
+                                newParameterArr = newParameterArr.concat(argItem);
 
                         });
 
                 });
+
+                if (isDefined(object?.parameters)) {
+                    object.parameters = newParameterArr;
+                }
+
+                console.log(object?.parameters)
+
+                let newEventArr = [];
+
+                object?.events?.forEach(eventObject => {
+
+                    if (isArray(eventObject?.$ref))
+                        eventObject.$ref.forEach(item => {
+                            let isRefObject = isRefInComponent(item, COMPONENTS_FOR_EVENTS_OBJECT_NAME);
+                            if (isRefObject)
+                                newEventArr = newEventArr.concat(isRefObject);
+                        });
+
+
+                    if (isRef(eventObject) && isString(eventObject)) {
+                        let isRefObject = isRefInComponent(eventObject, COMPONENTS_FOR_EVENTS_OBJECT_NAME);
+                        if (isRefObject) {
+                            newEventArr = newEventArr.concat(isRefObject);
+                        }
+                    }
+
+                    if (!isRef(eventObject))
+                        newEventArr = newEventArr.concat(eventObject);
+
+                });
+
+                if (isDefined(object?.events)) {
+                    object.events = newEventArr;
+                }
 
             });
 
@@ -103,12 +172,24 @@ function paths() {
 
 }
 
+function pushDataParameter(data) {
+    if (isRef(data.itemForObject) && isRefInComponent(data.itemForObject, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME)) {
+        remove(data.arr, data.itemForObject);
+        data.object[data.objectType] = isRefInComponent(data.itemForObject, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME).concat(data.arr);
+    }
+}
+
+function remove(arr, item) {
+    arr.splice(arr.indexOf(item), 1);
+}
+
+
 function getRefName(str) {
     return str?.split('/')[1];
 }
 
-function isReferenceIntoComponentObjectForParameter(key) {
-    let parameters = yamlObject?.components?.parameters,
+function isReferenceIntoComponentObjectForParameter(key, type) {
+    let parameters = yamlObject?.components[type],
         parameterObject = parameters?.[getRefName(key)];
 
     return parameterObject === undefined ? false : parameterObject;
