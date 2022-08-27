@@ -21,13 +21,13 @@ tags:
 
 securityDefinitions:
   apiKey:
-    description: REST API uses a persistent Api Key.
+    description: Socket.io uses a persistent Api Key.
     type: apiKey
     in: header
     schema: all
     name: apiKey
   token:
-    description: REST API uses a persistent JWT Token.
+    description: Socket.io uses a persistent JWT Token.
     type: apiKey
     in: header
     name: authorization
