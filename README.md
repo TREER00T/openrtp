@@ -4,10 +4,10 @@
 
 - [Install](#install)
 - [Introduction](#introduction)
-- [How to use](#how to use)
+- [HowToUse](#howtouse)
 - [Configuration](#configuration)
 - [Documentation](#documentation)
-- [Change Log](#Change Log)
+- [ChangeLog](#changelog)
 
 ## Install
 
@@ -28,7 +28,7 @@ $ npm i openrtp
 Is a text-based software framework supported by an extensive ecosystem of tools that help developers design, build,
 document, and use programming relationships for socket.io.
 
-## How to use
+## HowToUse
 
 Write this code in js file:
 
@@ -75,7 +75,7 @@ openRTP({
 It gives you information about the yaml file structure, [click](https://github.com/treegex/openrtp/tree/main/docs/docs.md) for more information
 
 
-## Change Log
+## ChangeLog
 
 #### Version 1.x
 [Change Log](https://github.com/treegex/openrtp/tree/main/CHANGELOG/1.x/CHANGELOG.md)
