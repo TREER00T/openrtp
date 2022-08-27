@@ -5,5 +5,5 @@ let initExpress = require('./src/express/index'),
 
 module.exports = (data) => {
     yamlDocs.parse(File.read(data?.fileLocation));
-    initExpress(data?.express, data?.route, data?.publicRoute);
+    initExpress(data?.express, data?.route);
 }

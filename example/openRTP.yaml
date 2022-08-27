@@ -1,0 +1,163 @@
+info:
+  title: Book store service
+  version: 1.0.0
+  contact:
+    email: treeroot.ir@gmail.com
+    phone: '09030207892'
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: This service is responsible for processing books and authentication.
+
+baseUrl: http://localhost:3000
+
+tags:
+  - name: SingUp
+    description: Operations about user singup
+  - name: Login
+    description: Operations about user login
+  - name: Books
+    description: Operations about books
+
+securityDefinitions:
+  apiKey:
+    description: REST API uses a persistent Api Key.
+    type: apiKey
+    in: header
+    schema: all
+    name: apiKey
+  token:
+    description: REST API uses a persistent JWT Token.
+    type: apiKey
+    in: header
+    name: authorization
+
+
+paths:
+
+  /:
+
+    - on: LOGIN_USER
+      tags:
+        - Login
+      parameters:
+        - in: param
+          name: email
+          type: integer
+          required: true
+        - in: param
+          name: password
+          type: string
+          required: true
+      security:
+        - apiKey
+      events:
+        - $ref:
+            - components/OK
+            - components/NOT_FOUND
+
+    - on: SINGUP_USER
+      tags:
+        - SingUp
+      parameters:
+        - $ref:
+            - components/SingUp_P
+        - in: param
+          name: location
+          type: string
+          required: false
+      security:
+        - token
+      events:
+        - $ref:
+            - components/CREATE
+        - name: EMAIL_CONFLICT
+          description: email already exists
+
+  /books:
+
+    - on: LIST_OF_BOOKS
+      description: Return list of user books
+      security:
+        - apiKey
+        - token
+      tags:
+        - Books
+      events:
+        - $ref:
+            - components/OK
+            - components/NOT_FOUND
+            - components/BOOK_LIST
+    
+    - on: ADD_BOOK
+      security:
+        - apiKey
+        - token
+      tags:
+        - Books
+      parameters:
+          - in: param
+            name: name
+            type: string
+            required: true
+          - in: param
+            name: description
+            type: string
+            required: true
+        - args:
+          - in: param
+            name: image
+            type: binary
+            required: true
+
+
+definitions:
+  Status:
+    - name: name
+      type: string
+      description: Name of the user
+    - name: age
+      type: integer
+      description: Age of the user
+  Response:
+    - name: status
+      type: integer
+      description: Event reponse status code
+    - name: message
+      type: string
+      description: Event reponse mssage
+
+
+
+components:
+  events:
+    CREATED:
+      - name: Created
+        description: Successfully Created
+    OK:
+      - name: OK
+        description: Successful
+    NOT_FOUND:
+      - name: NOT_FOUND
+        description: Resource not found
+    BOOK_LIST:
+      - name: BOOK_LIST
+        description: List of user books
+  parameters:
+    SingUp_P:
+      - in: param
+        name: name
+        type: string
+        required: true
+      - in: param
+        name: phoneNumber
+        type: string
+        required: true
+      - in: param
+        name: email
+        type: string
+        required: true
+      - in: param
+        name: age
+        type: integer
+        required: true

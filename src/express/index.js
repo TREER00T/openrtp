@@ -6,8 +6,8 @@ let {
     app = express();
 
 
-module.exports = (expressApp, route, publicRoute) => {
-    let pubRoute = publicRoute === undefined ? '/public' : publicRoute,
+module.exports = (expressApp, route) => {
+    let pubRoute = '/public',
         viewRoute = route === undefined ? '/socket-docs' : route,
         path = __dirname + '/../../lib/ui/public';
     if (expressApp !== undefined || null) {
