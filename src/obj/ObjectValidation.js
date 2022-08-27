@@ -82,7 +82,7 @@ function paths() {
 
 
                 let newParameterArr = [];
-                object?.parameters?.forEach((itemForParameter, index, arr) => {
+                object?.parameters?.forEach(itemForParameter => {
                     let args = itemForParameter?.args;
                     let isUsedArgs = args !== undefined;
 
