@@ -17,3 +17,10 @@ Change Log
  * Fix bug in default tag
  * Refactor code
  * Changed css file
+
+## Version 1.0.2
+
+2022-08-27
+
+ * Fix bug in show reference object and some validation for parameter, args and event tables
+ * Fix bug open and close dialog
