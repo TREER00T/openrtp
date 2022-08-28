@@ -3,7 +3,7 @@ Change Log
 
 ## Version 1.0.2
 
-2022-08-27
+2022-08-28
 
 * Fix bug in show reference object and some validation for parameter, args and event tables
 * Fix bug open and close dialog
