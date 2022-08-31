@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+## Version 1.0.3
+
+2022-08-31
+
+ * Removed expressApp argument from index file 
+ * Added port and hostname for openRTP express
+
 ## Version 1.0.2
 
 2022-08-28

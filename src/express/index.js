@@ -6,21 +6,15 @@ let {
     app = express();
 
 
-module.exports = (expressApp, route) => {
-    let pubRoute = '/public',
+module.exports = (port, host, route) => {
+    let hostName = host === undefined ? '127.0.0.1' : host,
+        portNumber = port === undefined ? 17892 : port,
         viewRoute = route === undefined ? '/socket-docs' : route,
         path = __dirname + '/../../lib/ui/public';
-    if (expressApp !== undefined || null) {
-        let app = expressApp();
-        app.use(pubRoute, expressApp.static(path));
-        app.get(viewRoute, reqHandler);
-        app.get('/iconUrl', sendIconUrl);
-        return;
-    }
-    app.use(pubRoute, express.static(path));
+    app.use('/public', express.static(path));
     app.get(viewRoute, reqHandler);
     app.get('/iconUrl', sendIconUrl);
-    app.listen(17892, () => {
-        console.log(`OpenRTP Listen On Port 17892 ...`);
+    app.listen(portNumber, hostName, () => {
+        console.log(`OpenRTP Listen On ${hostName}:${portNumber} ...`);
     });
 }

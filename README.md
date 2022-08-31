@@ -53,11 +53,11 @@ openRTP, [click](https://github.com/treegex/openrtp#Configuration) for more info
 
 ```js
 let openRTP = require('openrtp');
-let express = require('express');
 
 openRTP({
     fileLocation: 'openrtp.yaml',
-    express: express,
+    host: '127.0.0.1',
+    port: '3000',
     route: '/io/docs'
 });
 ```
@@ -65,7 +65,9 @@ openRTP({
 
 `fileLocation` => `Yaml file path`
 
-`express` => `Instanse Of express`
+`port` => `OpenRTP express port`
+
+`host` => `OpenRTP express host`
 
 `route` => `Is the path to display the output of the yaml file in the rest api`
 
