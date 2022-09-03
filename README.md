@@ -2,12 +2,19 @@
 
 ## Table of Contents
 
+- [Screenshots](#screenshots)
 - [Install](#install)
 - [Introduction](#introduction)
 - [HowToUse](#howtouse)
 - [Configuration](#configuration)
 - [Documentation](#documentation)
 - [ChangeLog](#changelog)
+
+
+## Screenshots
+
+[Click](https://github.com/treegex/openrtp/tree/main/screenshots) to see openRTP example screenshots 
+
 
 ## Install
 
