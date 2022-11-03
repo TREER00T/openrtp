@@ -1,6 +1,18 @@
 Change Log
 ==========
 
+## Version 1.0.5
+
+2022-11-04
+
+ * Refactor code
+ 
+## Version 1.0.4
+
+2022-09-21
+
+ * Added typescript declaration
+
 ## Version 1.0.300
 
 2022-09-03

@@ -120,7 +120,7 @@ definitions:
       type: integer
       description: Age of the user
   Response:
-    - name: status
+    - name: code
       type: integer
       description: Event reponse status code
     - name: message

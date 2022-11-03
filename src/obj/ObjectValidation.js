@@ -39,6 +39,7 @@ function securityDefinitions() {
     let securityDefinitionsObject = yamlObject?.securityDefinitions;
     module.exports.arrayOfKeyForAddAuthInAllRequest = [];
     module.exports.securityDefinitions = [];
+
     for (let key in securityDefinitionsObject) {
         let item = securityDefinitionsObject[key];
 
@@ -50,8 +51,8 @@ function securityDefinitions() {
 }
 
 function paths() {
-    let data = [];
     let pathsObject = yamlObject?.paths;
+
     if (isArray(pathsObject)) {
         pathsObject.forEach(object => {
             jsonConfig('/', object);
@@ -95,16 +96,14 @@ function jsonConfig(key, object) {
         let isUsedArgs = args !== undefined;
 
 
-        if (isArray(itemForParameter?.$ref)) {
-            itemForParameter.$ref.forEach(item => {
+        if (isArray(itemForParameter?.$ref))
+           return  itemForParameter.$ref.forEach(item => {
 
                 let isRefObject = isRefInComponent(item, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME);
                 if (isRefObject)
                     newParameterArr = newParameterArr.concat(isRefObject);
 
             });
-            return;
-        }
 
         let isRefObject = isRefInComponent(itemForParameter, COMPONENTS_FOR_PARAMETERS_OBJECT_NAME);
         if (isRefObject)
@@ -145,9 +144,9 @@ function jsonConfig(key, object) {
 
     });
 
-    if (isDefined(object?.parameters)) {
+    if (isDefined(object?.parameters))
         object.parameters = newParameterArr;
-    }
+
 
     let newEventArr = [];
 
@@ -163,9 +162,8 @@ function jsonConfig(key, object) {
 
         if (isRef(eventObject) && isString(eventObject)) {
             let isRefObject = isRefInComponent(eventObject, COMPONENTS_FOR_EVENTS_OBJECT_NAME);
-            if (isRefObject) {
+            if (isRefObject)
                 newEventArr = newEventArr.concat(isRefObject);
-            }
         }
 
         if (!isRef(eventObject))
@@ -173,9 +171,9 @@ function jsonConfig(key, object) {
 
     });
 
-    if (isDefined(object?.events)) {
+    if (isDefined(object?.events))
         object.events = newEventArr;
-    }
+
 
 }
 
@@ -188,7 +186,7 @@ function isReferenceIntoComponentObjectForParameter(key, type) {
     let parameters = yamlObject?.components[type],
         parameterObject = parameters?.[getRefName(key)];
 
-    return parameterObject === undefined ? false : parameterObject;
+    return !parameterObject ? false : parameterObject;
 }
 
 

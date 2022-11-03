@@ -1,6 +1,6 @@
 {
   "name": "openrtp",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Is a text-based software framework supported by an extensive ecosystem of tools that help developers design, build, document, and use programming relationships for socket.io.",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "swagger",
     "openrtp"
   ],
+  "types": "index.d.ts",
   "author": "Ali Azmoodeh <treeroot.ir@gmail.com>",
   "license": "MIT",
   "bugs": {
