@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+## Version 1.0.6
+
+2022-11-17
+
+ * fix bug in isDefined function in util module
+ * added transition for text-in-box class
+
 ## Version 1.0.5
 
 2022-11-04
