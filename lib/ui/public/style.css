@@ -120,6 +120,8 @@ body {
 .text-in-box {
     font-family: 'Trebuchet MS', sans-serif;
     color: var(--blue-ligth-100);
+    transition-property: background-color, color;
+    transition-duration: 500ms;
 }
 
 .tbl-status {
