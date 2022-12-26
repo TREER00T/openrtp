@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+## Version 1.0.7
+
+2022-12-26
+
+ * fixed bug from import module
+ * added screenshots folder in .npmignore
+
 ## Version 1.0.6
 
 2022-11-17
