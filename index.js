@@ -3,7 +3,9 @@ let initExpress = require('./src/express/index'),
     yamlDocs = require('./src/obj/ObjectValidation');
 
 
-module.exports = (data) => {
-    yamlDocs.parse(File.read(data?.fileLocation));
-    initExpress(data?.port, data?.host, data?.route);
+module.exports = {
+    setup(data) {
+        yamlDocs.parse(File.read(data?.fileLocation));
+        initExpress(data?.port, data?.host, data?.route);
+    }
 }

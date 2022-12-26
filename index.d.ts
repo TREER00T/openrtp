@@ -6,7 +6,6 @@ type RTPObject = {
 }
 
 declare module 'openrtp' {
-
-    export default function (data: RTPObject): void;
+    export function setup(data: RTPObject): void;
 
 }
